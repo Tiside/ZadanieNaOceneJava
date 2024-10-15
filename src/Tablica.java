@@ -3,13 +3,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Tablica {
+    private int n;
     private List<Integer> tablica;
 
     public Tablica(int n) {
-        this.tablica = new ArrayList<>(n);
-        for (int i = 0; i < n; i++) {
-            tablica.add(0);
-        }
+        this.n = n;
+        this.tablica = new ArrayList<>();
     }
 
     public List<Integer> getTablica() {
@@ -18,8 +17,8 @@ public class Tablica {
 
     public void wypelnij(int a, int b) {
         Random random = new Random();
-        for (int i = 0; i < tablica.size(); i++) {
-            tablica.set(i, random.nextInt(b - a + 1) + a);
+        for (int i = 0; i < n; i++) {
+            tablica.add(random.nextInt(b - a + 1) + a);
         }
     }
 
@@ -61,17 +60,5 @@ public class Tablica {
             }
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-        Tablica mojaTablica = new Tablica(10);
-        mojaTablica.wypelnij(1, 100);
-        System.out.println("Tablica: " + mojaTablica.tablica);
-        System.out.println("Maksymalna wartość: " + mojaTablica.maksimum());
-        System.out.println("Minimalna wartość: " + mojaTablica.minimum());
-        System.out.println("Druga maksymalna wartość: " + mojaTablica.maksimum2());
-        int szukanaWartosc = 50;
-        int indeks = mojaTablica.znajdz(szukanaWartosc);
-        System.out.println("Wartość " + szukanaWartosc + " znaleziona na indeksie: " + indeks);
     }
 }
